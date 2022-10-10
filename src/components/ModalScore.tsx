@@ -22,7 +22,7 @@ export const ModalScore = ({setShowModal}: Props) => {
           </p>
         </div>
         <menu className="dialog-menu d-flex gap-5 justify-content-center">
-          <button className="nes-btn is-primary" onClick={() => setShowModal(false)}>
+          <button className="nes-btn is-primary w-100" onClick={() => setShowModal(false)}>
             Salir
           </button>
         </menu>

@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const dialogEl = document.getElementById("score-modal") as HTMLDialogElement;
+    const dialogEl = document.getElementById("score-modal") as any;
 
     showModal ? dialogEl?.showModal() : dialogEl?.close();
 
