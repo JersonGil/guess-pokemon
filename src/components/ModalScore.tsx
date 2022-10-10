@@ -2,7 +2,11 @@ import {useContext} from "react";
 
 import {ScoreContext} from "../App";
 
-export const ModalScore = () => {
+interface Props {
+  setShowModal: (data: boolean) => void;
+}
+
+export const ModalScore = ({setShowModal}: Props) => {
   const score = useContext(ScoreContext);
 
   return (
@@ -18,8 +22,9 @@ export const ModalScore = () => {
           </p>
         </div>
         <menu className="dialog-menu d-flex gap-5 justify-content-center">
-          <button className="nes-btn">Cancel</button>
-          <button className="nes-btn is-primary">Confirm</button>
+          <button className="nes-btn is-primary" onClick={() => setShowModal(false)}>
+            Salir
+          </button>
         </menu>
       </form>
     </dialog>

@@ -25,6 +25,7 @@ function App() {
   const [pokemons, setPokemons] = useState<Pokemon>();
   const [pokemon, setPokemon] = useState("");
   const [showPokemon, setShowPokemon] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [scoreData, setScoreData] = useState(initialValue);
 
   const getPokemon = useCallback(() => {
@@ -36,6 +37,14 @@ function App() {
   useEffect(() => {
     getPokemon();
   }, []);
+
+  useEffect(() => {
+    const dialogEl = document.getElementById("score-modal") as HTMLDialogElement;
+
+    showModal ? dialogEl?.showModal() : dialogEl?.close();
+
+    return () => dialogEl?.close();
+  }, [showModal]);
 
   const onShowPokemon = (e: ChangeEvent<HTMLInputElement>) => {
     const pokemon = e.target.value;
@@ -89,7 +98,7 @@ function App() {
                     className="nes-btn is-success mt-4 w-50"
                     type="button"
                     onClick={() => {
-                      (document?.getElementById("score-modal") as HTMLDialogElement).showModal();
+                      setShowModal(true);
                     }}
                   >
                     Puntajes
@@ -105,7 +114,7 @@ function App() {
               </>
             )}
           </div>
-          <ModalScore />
+          <ModalScore setShowModal={setShowModal} />
         </div>
       </main>
     </ScoreContext.Provider>
