@@ -1,11 +1,19 @@
 interface PokemonProps {
   pokeName?: string;
+  pokeUrl?: string;
+  showPokemon: boolean;
 }
 
-export const Pokemons = ({pokeName}: PokemonProps) => {
+export const Pokemons = ({pokeName, pokeUrl, showPokemon}: PokemonProps) => {
   return (
     <section className="icon-list">
-      {pokeName && <i className={`nes-${pokeName.toLowerCase()}`} />}
+      {pokeUrl && (
+        <img
+          alt={pokeName ? pokeName : "pokemon"}
+          className={`poke-img ${showPokemon && "show"}`}
+          src={pokeUrl.toLowerCase()}
+        />
+      )}
     </section>
   );
 };
